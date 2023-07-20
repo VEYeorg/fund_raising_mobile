@@ -109,4 +109,13 @@ export const feedStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  buttonDonate: {
+    width: '100%',
+    marginTop: 8,
+    backgroundColor: '#8FBC8F',
+    borderRadius: 8,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

@@ -18,6 +18,7 @@ import CustomProgressBar from '../../component/atom/CustomProgressBar';
 import CustomButton from '../../component/atom/CustomButton';
 
 const FeedDetails: React.FC<ProjectType> = () => {
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ItemProject: React.FC<{item: ProjectType}> = () => (
     <View style={feedStyles.projectContainerDetails}>
       <View onPress={() => {}}>
@@ -43,7 +44,11 @@ const FeedDetails: React.FC<ProjectType> = () => {
             description about the project Some description about the project
           </TextComponent>
 
-          <CustomButton title="Donate" onPress={() => console.log('Button')} />
+          <CustomButton
+            title="Donate"
+            onPress={() => console.log('Button')}
+            style={feedStyles.buttonDonate}
+          />
         </View>
       </View>
     </View>
