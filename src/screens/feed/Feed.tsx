@@ -1,0 +1,84 @@
+import React from 'react';
+import {FlatList, View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {ProjectType} from '../../types/Index';
+import {projects} from '../../mock/feeds';
+import ItemDonation from '../../component/ItemDonation';
+import SearchBar from '../../component/SearchBar';
+import NotificationIcon from '../../component/atom/NotificationIcon';
+import Category from '../../component/Category';
+import {Color} from '../../assets/GlobalStyles';
+import ItemDonationVertical from '../../component/ItemDonationVertical';
+import {feedStyles} from './FeedsStyle';
+
+const Feed: React.FC<ProjectType> = () => {
+  const renderProjectItem: React.FC<{item: ProjectType}> = () => (
+    <View style={feedStyles.projectContainer}>
+      <ItemDonation />
+    </View>
+  );
+
+  const renderProject: React.FC<{item: ProjectType}> = () => (
+    <View style={feedStyles.projectItem}>
+      <ItemDonationVertical onPress={() => {}} />
+    </View>
+  );
+
+  return (
+    <SafeAreaView style={feedStyles.container}>
+      <View style={feedStyles.searchContainer}>
+        <SearchBar placeholder="Search" />
+        <NotificationIcon count={3} style={feedStyles.notificationIcon} />
+      </View>
+
+      <ScrollView>
+        <View style={feedStyles.categoryContainer}>
+          <Category
+            iconName="wallet-outline"
+            title="Donate"
+            iconSize={32}
+            onPress={() => console.log('Home')}
+            style={feedStyles.category}
+            color={Color.white}
+            styleContainer={feedStyles.styleContainer}
+          />
+
+          <Category
+            iconName="cart-outline"
+            title="Charity"
+            iconSize={32}
+            onPress={() => console.log('Home')}
+            style={feedStyles.category}
+            color={Color.white}
+            styleContainer={feedStyles.styleContainer}
+          />
+        </View>
+
+        <View style={feedStyles.forestContainer}>
+          <Text style={feedStyles.projectTitle}>Urgent FundRaising</Text>
+          <ScrollView horizontal={true}>
+            <FlatList
+              horizontal={true}
+              data={projects as ProjectType[]}
+              renderItem={renderProjectItem}
+              keyExtractor={item => item.id}
+              contentContainerStyle={feedStyles.container}
+            />
+          </ScrollView>
+        </View>
+
+        <View style={feedStyles.forestContainer}>
+          <Text style={feedStyles.projectTitle}>Urgent FundRaising</Text>
+          <FlatList
+            horizontal={false}
+            data={projects as ProjectType[]}
+            renderItem={renderProject}
+            keyExtractor={item => item.id}
+            contentContainerStyle={feedStyles.container}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default Feed;
