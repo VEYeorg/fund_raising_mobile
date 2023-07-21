@@ -10,19 +10,7 @@ import {Color} from '../../assets/GlobalStyles';
 import ItemDonationVertical from '../../component/ItemDonationVertical';
 import {feedStyles} from './FeedsStyle';
 
-const Feed: React.FC<ProjectType> = () => {
-  const renderProjectItem: React.FC<{item: ProjectType}> = () => (
-    <View style={feedStyles.projectContainer}>
-      <ItemDonation />
-    </View>
-  );
-
-  const renderProject: React.FC<{item: ProjectType}> = () => (
-    <View style={feedStyles.projectItem}>
-      <ItemDonationVertical onPress={() => {}} />
-    </View>
-  );
-
+const Feed: React.FC<ProjectType> = ({navigation}) => {
   return (
     <SafeAreaView style={feedStyles.container}>
       <View style={feedStyles.searchContainer}>
@@ -37,9 +25,14 @@ const Feed: React.FC<ProjectType> = () => {
             title="Donate"
             iconSize={32}
             onPress={() => console.log('Home')}
-            style={feedStyles.category}
+            style={[
+              feedStyles.category,
+              {
+                backgroundColor: Color.primary,
+              },
+            ]}
             color={Color.white}
-            styleContainer={feedStyles.styleContainer}
+            styleContainer={[feedStyles.styleContainer]}
           />
 
           <Category
@@ -59,7 +52,15 @@ const Feed: React.FC<ProjectType> = () => {
             <FlatList
               horizontal={true}
               data={projects as ProjectType[]}
-              renderItem={renderProjectItem}
+              renderItem={() => (
+                <View style={feedStyles.projectContainer}>
+                  <ItemDonation
+                    onPress={() => {
+                      navigation.navigate('FeedDetails');
+                    }}
+                  />
+                </View>
+              )}
               keyExtractor={item => item.id}
               contentContainerStyle={feedStyles.container}
             />
@@ -71,7 +72,15 @@ const Feed: React.FC<ProjectType> = () => {
           <FlatList
             horizontal={false}
             data={projects as ProjectType[]}
-            renderItem={renderProject}
+            renderItem={() => (
+              <View style={feedStyles.projectItem}>
+                <ItemDonationVertical
+                  onPress={() => {
+                    navigation.navigate('FeedDetails');
+                  }}
+                />
+              </View>
+            )}
             keyExtractor={item => item.id}
             contentContainerStyle={feedStyles.container}
           />

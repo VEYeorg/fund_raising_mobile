@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {UserType} from '../types/Index';
-import {Image, Button} from 'react-native';
+import {Image} from 'react-native';
 import {useAuth} from '../context/AuthContext';
+import ItemDonationVertical from '../component/ItemDonationVertical';
+import TextComponent from '../component/atom/CustomText';
 
 let user: UserType = {
   id: '1',
@@ -25,11 +27,24 @@ const Profile: React.FC<UserType> = () => {
       <View>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.email}>{user.email}</Text>
-        <Text style={styles.bio}>{user.bio}</Text>
       </View>
-      {/* create a logout button  */}
 
-      <Button title="Logout" onPress={logout} />
+      <View>
+        <TextComponent fontSize={17} color="#000" fontWeight="bold">
+          Your donations
+        </TextComponent>
+
+        <FlatList
+          horizontal={false}
+          data={[1, 2, 3, 4, 5, 6, 6] as any}
+          renderItem={() => (
+            <View style={styles.margin}>
+              <ItemDonationVertical onPress={() => {}} />
+            </View>
+          )}
+          keyExtractor={item => item.id}
+        />
+      </View>
     </View>
   );
 };
@@ -47,7 +62,6 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
-    marginBottom: 16,
   },
   name: {
     fontSize: 24,
@@ -59,8 +73,8 @@ const styles = StyleSheet.create({
     color: '#999999',
     marginBottom: 8,
   },
-  bio: {
-    fontSize: 16,
+  margin: {
+    marginTop: 16,
   },
 });
 
