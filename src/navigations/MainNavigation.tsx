@@ -6,11 +6,29 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feed from '../screens/feed/Feed';
 import Profile from '../screens/Profile';
 
-import Build from '../screens/Build';
 import {Color, boxShadow} from '../assets/GlobalStyles';
 import FeedDetails from '../screens/feed/FeedDetails';
 
+import {createStackNavigator} from '@react-navigation/stack';
+
+import Favorite from '../screens/feed/Favorite';
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const FeedStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Feed">
+      <Stack.Screen
+        name="Feed"
+        component={Feed}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen name="FeedDetails" component={FeedDetails} />
+    </Stack.Navigator>
+  );
+};
 
 export default function MainNavigation() {
   return (
@@ -25,19 +43,8 @@ export default function MainNavigation() {
         boxShadow,
       ]}>
       <Tab.Screen
-        name="Feed1"
-        component={Build}
-        options={{
-          tabBarLabel: 'Feed 1',
-          tabBarIcon: ({color}) => (
-            <Ionicons name="home-outline" color={color} size={26} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
         name="Feed"
-        component={FeedDetails}
+        component={FeedStack}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => (
@@ -48,7 +55,7 @@ export default function MainNavigation() {
 
       <Tab.Screen
         name="Notifications"
-        component={Feed}
+        component={Favorite}
         options={{
           tabBarLabel: 'Favorite',
           tabBarIcon: ({color}) => (

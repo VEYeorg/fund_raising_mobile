@@ -8,11 +8,18 @@ export const FontSize = {
   size_xs: 12,
   size_sm: 14,
 };
+// 60% rules of color
+// white 60%
+// primary 30%
+// secondary actionColr:  10%
 /* Colors */
 export const Color = {
-  primary: '#202D37',
-  secondary: '#2B3E4B',
+  primary: '#557A46',
+  secondary: '#8C3333',
   white: '#fff',
+  primarylight: '#7A9D54',
+  secondaryLight: '#8C3333',
+
   darkslategray: '#043010',
   gainsboro: '#d9d9d9',
   black: '#000',

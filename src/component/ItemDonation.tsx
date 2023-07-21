@@ -6,9 +6,13 @@ import CustomProgressBar from './atom/CustomProgressBar';
 import TextComponent from './atom/CustomText';
 import {Color, boxShadow} from '../assets/GlobalStyles';
 
-const ItemDonation = () => {
+interface ItemDonationProps {
+  onPress: () => void;
+}
+
+const ItemDonation: React.FC<ItemDonationProps> = ({onPress}) => {
   return (
-    <TouchableOpacity style={[styles.container, boxShadow]} onPress={() => {}}>
+    <TouchableOpacity style={[styles.container, boxShadow]} onPress={onPress}>
       <View style={styles.imagesView}>
         <Image source={imagesitem13x} style={styles.image} resizeMode="cover" />
       </View>

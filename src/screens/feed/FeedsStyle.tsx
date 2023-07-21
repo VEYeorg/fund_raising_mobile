@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {Color} from '../../assets/GlobalStyles';
 export const feedStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -35,7 +36,7 @@ export const feedStyles = StyleSheet.create({
   category: {
     width: 60,
     height: 60,
-    backgroundColor: '#8FBC8F',
+    backgroundColor: Color.primarylight,
   },
   categoryContainer: {
     marginTop: 8,
@@ -66,11 +67,10 @@ export const feedStyles = StyleSheet.create({
 
   projectContainerDetails: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 
   imagesView: {
-    height: 160,
+    height: 240,
     alignItems: 'center',
   },
   image: {
@@ -85,6 +85,7 @@ export const feedStyles = StyleSheet.create({
   description: {
     fontSize: 15,
     color: '#333',
+    lineHeight: 21,
   },
   progressBarContainer: {
     width: '100%',
@@ -104,9 +105,25 @@ export const feedStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 8,
   },
+  goalTextBold: {
+    fontSize: 21,
+    color: '#333',
+    fontWeight: 'bold',
+    marginTop: 8,
+  },
+
   contentTextPrice: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  buttonDonate: {
+    width: '100%',
+    marginTop: 8,
+    backgroundColor: '#8FBC8F',
+    borderRadius: 8,
+    height: 40,
+    justifyContent: 'center',
     alignItems: 'center',
   },
 });
