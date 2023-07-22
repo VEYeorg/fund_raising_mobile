@@ -9,16 +9,36 @@ import Category from '../../component/Category';
 import {Color} from '../../assets/GlobalStyles';
 import ItemDonationVertical from '../../component/ItemDonationVertical';
 import {feedStyles} from './FeedsStyle';
+import CustomButton from '../../component/atom/CustomButton';
 
 const Feed: React.FC<ProjectType> = ({navigation}) => {
+  const [expier, setExpier] = React.useState(false);
+
+  setTimeout(() => {
+    setExpier(true);
+  }, 3000);
+
   return (
     <SafeAreaView style={feedStyles.container}>
       <View style={feedStyles.searchContainer}>
         <SearchBar placeholder="Search" />
+
         <NotificationIcon count={3} style={feedStyles.notificationIcon} />
       </View>
 
       <ScrollView>
+        {!expier && (
+          <CustomButton
+            title=" + Start a go fund me"
+            onPress={() => console.log('Button')}
+            buttonStyle={{
+              backgroundColor: 'green',
+              marginTop: 16,
+              borderRadius: 26,
+            }}
+            textStyle={{color: '#fff'}}
+          />
+        )}
         <View style={feedStyles.categoryContainer}>
           <Category
             iconName="wallet-outline"

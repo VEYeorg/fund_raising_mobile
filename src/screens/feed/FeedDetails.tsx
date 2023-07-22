@@ -18,17 +18,26 @@ import ItemUser from '../../component/ItemUser';
 
 import UserDonation from '../../component/UserDonation';
 import UserCommentItem from '../../component/UserCommentItem';
-import {boxShadow} from '../../assets/GlobalStyles';
+import {Color, boxShadow} from '../../assets/GlobalStyles';
 
 const FeedDetails: React.FC<ProjectType> = ({navigation}) => {
+  //  set name for header
+  navigation.setOptions({
+    title: 'Details about the project',
+  });
+
   const [readMore, setReadMore] = React.useState(false);
   const handleSetReadMore = () => {
     setReadMore(!readMore);
   };
 
+  const goToPay = () => {
+    navigation.navigate('PaymentForm', {});
+  };
+
   const ItemProject: React.FC<{item: ProjectType}> = () => (
     <View style={feedStyles.projectContainerDetails}>
-      <View onPress={() => {}}>
+      <View>
         <View style={feedStyles.imagesView}>
           <Image
             source={imagesitem13x}
@@ -56,9 +65,21 @@ const FeedDetails: React.FC<ProjectType> = ({navigation}) => {
 
           <CustomButton
             title="Donate"
-            onPress={() => console.log('Button')}
+            onPress={goToPay}
             buttonStyle={{
               backgroundColor: '#8FBC8F',
+              width: '100%',
+              borderRadius: 26,
+              marginTop: 16,
+            }}
+            textStyle={{color: '#fff'}}
+          />
+
+          <CustomButton
+            title="Patage a zanmi w"
+            onPress={goToPay}
+            buttonStyle={{
+              backgroundColor: Color.secondary,
               width: '100%',
               borderRadius: 26,
               marginTop: 16,
@@ -208,6 +229,18 @@ const FeedDetails: React.FC<ProjectType> = ({navigation}) => {
             />
           </View>
         </View>
+
+        <CustomButton
+          title="Donate"
+          onPress={goToPay}
+          buttonStyle={{
+            backgroundColor: '#8FBC8F',
+            width: '100%',
+            borderRadius: 26,
+            marginTop: 16,
+          }}
+          textStyle={{color: '#fff'}}
+        />
       </View>
     </View>
   );
