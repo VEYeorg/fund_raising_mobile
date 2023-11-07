@@ -3,7 +3,7 @@ import { View, StyleSheet, Image } from 'react-native';
 import { Color } from '../../assets/GlobalStyles';
 import TextComponent from '../atom/CustomText';
 import CustomImage from '../atom/CustomImage';
-import { collect_money, share_with_friend } from '../../assets/images';
+import {  share_with_friend } from '../../assets/images';
 
 
 const ThankYou  = ({message}: any) =>  { 
